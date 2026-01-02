@@ -17,7 +17,7 @@ return new class extends Migration
             $table->timestamp('waktu_perubahan')->nullable(false);
             $table->unsignedBigInteger('antrian_id');
 
-            $table->foreignId('antrian_id')->references('id')->on('antrian')->onUpdate('cascade')->onDelete('no action');
+            $table->foreign('antrian_id')->references('id')->on('antrian')->onUpdate('cascade')->onDelete('no action');
         });
     }
 

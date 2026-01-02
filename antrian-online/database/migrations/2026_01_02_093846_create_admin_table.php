@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id('id')->autoIncrement()->nullable(false);
             $table->string('nama', 255);
             $table->string('password', 255);
-            $table->string('email', 20)->unique();
         });
     }
 

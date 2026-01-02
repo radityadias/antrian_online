@@ -18,9 +18,9 @@ return new class extends Migration
             $table->enum('status', ['menunggu', 'diproses', 'selesai'])->nullable(false);
             $table->date('tanggal');
             $table->timestamp('waktu_dibuat');
-            $table->timestamp('waktu_dipanggil');
-            $table->timestamp('waktu_selesai');
-            $table->unsignedBigInteger('admin_id');
+            $table->timestamp('waktu_dipanggil')->nullable(true);
+            $table->timestamp('waktu_selesai')->nullable(true);
+            $table->unsignedBigInteger('admin_id')->nullable(true);
             
             $table->foreign('admin_id')->references('id')->on('admin')->onUpdate('cascade')->onDelete('no action');
         });
