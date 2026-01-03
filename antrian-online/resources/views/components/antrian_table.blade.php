@@ -16,7 +16,7 @@
                     <th class="px-2 py-4">{{ $antrian->id }}</th>
                     <td>
                         @if ($antrian->status == 'selesai')
-                            {{ $antrian->antrian_id->nomor }}
+                            {{ $antrian->Antrian->nomor}}
                         @else
                             {{ $antrian->id }}
                         @endif
