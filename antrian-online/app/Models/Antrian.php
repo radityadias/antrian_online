@@ -22,6 +22,4 @@ class Antrian extends Model
     ];
 
     public $timestamps = false;
-
-
 }

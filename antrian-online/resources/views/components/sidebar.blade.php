@@ -60,7 +60,7 @@
         <ul
             class="p-2 font-medium space-x-2 rounded-md transition-all duration-200 hover:scale-105 hover:bg-secondary-blue active:scale-95">
             <li>
-                <a href="#" class="flex items-center gap-5">
+                <a href="/dashboard/log" class="flex items-center gap-5">
                     <svg width="18px" height="18px" viewBox="0 0 512 512" version="1.1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>

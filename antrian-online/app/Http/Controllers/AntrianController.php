@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Antrian;
+use App\Models\Antrian_Log;
 use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +29,11 @@ class AntrianController extends Controller
     public function getAllAntrianSelesai() {
         $list_antrian = Antrian::where('status', 'selesai')->get();
         return $list_antrian;
+    }
+
+    public function getAllAntrianLog() {
+        $log_antrian = Antrian_Log::get();
+        return $log_antrian;
     }
 
     public function getLastestAntrian() {
@@ -72,10 +78,17 @@ class AntrianController extends Controller
         if($data) {
             $data->status = 'diproses';
             $data->waktu_dipanggil = Carbon::now();
-    
             $data->save();
 
-            return back()->with(['antrian_terakhir' => $data->id]);
+            Antrian_Log::create([
+               'status' => 'dipanggil',
+                'waktu_perubahan' => Carbon::now(),
+                'antrian_id' => $data->id
+            ]);
+
+            $total_antrian_menunggu = count($this->getAllAntrianMenunggu());
+
+            return back()->with(['total_antrian_menunggu' => $total_antrian_menunggu]);
         } else {
             return back()->withErrors(['message' => 'Kesahalah saat memangguil antrian']);
         };
@@ -83,11 +96,16 @@ class AntrianController extends Controller
 
     public function finishAntrian($id) {
         $data = Antrian::find($id);
+        $log_data = Antrian_Log::find($id);
 
         if ($data) {
             $data->status = 'selesai';
             $data->waktu_selesai = Carbon::now();
             $data->save();
+
+            $log_data->status = "selesai";
+            $log_data->waktu_perubahan = Carbon::now();
+            $log_data->save();
 
             return back();
         }

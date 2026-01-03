@@ -14,7 +14,13 @@
             @foreach ($list_antrian as $antrian)
                 <tr class="odd:bg-secondary-gray/70 even:bg-white">
                     <th class="px-2 py-4">{{ $antrian->id }}</th>
-                    <td>{{ $antrian->nomor }}</td>
+                    <td>
+                        @if ($antrian->status == 'selesai')
+                            {{ $antrian->antrian_id->nomor }}
+                        @else
+                            {{ $antrian->id }}
+                        @endif
+                    </td>
                     <td>{{ $antrian->status }}</td>
                     <td>
                         <form action="{{ route('antri_selesai', $antrian->id) }}" method="POST">

@@ -14,6 +14,7 @@ Route::get('/user', [AntrianController::class, 'index']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [DashboardController::class, 'homeIndex'])->name('dashboard');
 Route::get('/dashboard/antrian', [DashboardController::class, 'antrianIndex'])->name('antrian');
+Route::get('/dashboard/log', [DashboardController::class, 'logIndex'])->name('log');
 Route::get('/user/antri', [AntrianController::class, 'addAntrian'])->name('antri');
 
 // POST ROUTE
