@@ -10,8 +10,12 @@
     <main>
         <div class="w-full h-screen flex flex-col justify-center items-center gap-20">
             <div>
-                <p class="text-3xl font-medium mb-5">Antrian saat ini:</p>   
-                <p class="text-4xl font-semibold text-center">{{ $antrian->nomor }}</p>
+                <p class="text-3xl font-medium mb-5">Antrian saat ini:</p> 
+                @if ($antrian)
+                    <p class="text-4xl font-semibold text-center">{{ $antrian->nomor }}</p>
+                @else
+                    <p class="text-4xl font-semibold text-center">A000</p>
+                @endif  
             </div>
             
             <a href="{{ 'user/antri' }}" class="w-1/2 h-1/2 bg-blue-600 flex items-center justify-center rounded-lg">
