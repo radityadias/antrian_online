@@ -17,8 +17,8 @@ class Antrian_Log extends Model
         'antrian_id',
     ];
 
-    public function Antrian() {
-        return $this->belongsTo(Antrian::class, 'antrian_id', 'id');
+    public function antrian() {
+        return $this->belongsTo(Antrian::class);
     }
 
     public $timestamps = false;

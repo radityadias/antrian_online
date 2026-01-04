@@ -15,10 +15,10 @@
                 <tr class="odd:bg-secondary-gray/70 even:bg-white">
                     <th class="px-2 py-4">{{ $antrian->id }}</th>
                     <td>
-                        @if ($antrian->status == 'selesai')
-                            {{ $antrian->Antrian->nomor}}
+                        @if ($antrian->status == 'dipanggil')
+                            {{ $antrian->antrian->nomor}}
                         @else
-                            {{ $antrian->id }}
+                            {{ $antrian->nomor}}
                         @endif
                     </td>
                     <td>{{ $antrian->status }}</td>
